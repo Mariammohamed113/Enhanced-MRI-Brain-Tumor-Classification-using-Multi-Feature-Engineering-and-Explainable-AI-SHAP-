@@ -29,7 +29,7 @@ MODELS = {
     "LogisticRegression": LogisticRegression(max_iter=500)
 }
 
-# 🔹 تجربة سريعة: أول 100 ملف لكل Class
+# 🔹 
 MAX_FILES_PER_CLASS = 100
 
 # ================== UNIVERSAL LOADER ==================
@@ -84,3 +84,4 @@ for model_name, model in MODELS.items():
     plt.xlabel("Predicted")
     plt.ylabel("Actual")
     plt.show()
+
