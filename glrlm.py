@@ -27,7 +27,7 @@ MODELS = {
 
 # ================== LOAD MERGED FILES ==================
 X, y = [], []
-SAMPLES_PER_CLASS = 50  # أول 50 sample لكل Class
+SAMPLES_PER_CLASS = 50  
 
 for label, cls in enumerate(CLASSES):
     file_path = os.path.join(FEATURE_ROOT, f"{cls}.npy")
@@ -37,7 +37,7 @@ for label, cls in enumerate(CLASSES):
 
     data = np.load(file_path)
     if SAMPLES_PER_CLASS:
-        data = data[:SAMPLES_PER_CLASS]  # أول 50 sample
+        data = data[:SAMPLES_PER_CLASS]  
     X.extend(data)
     y.extend([label]*len(data))
     print(f"[INFO] Loaded {len(data)} samples from {cls}")
@@ -71,3 +71,4 @@ for model_name, model in MODELS.items():
     plt.xlabel("Predicted")
     plt.ylabel("Actual")
     plt.show()
+
