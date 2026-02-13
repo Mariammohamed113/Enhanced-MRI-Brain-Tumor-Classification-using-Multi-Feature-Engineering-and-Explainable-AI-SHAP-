@@ -92,10 +92,11 @@ for feature_name, func in FEATURES.items():
             feat = func(img)
             np.save(os.path.join(feature_class_folder, f"{os.path.splitext(f)[0]}.npy"), feat)
 
-            # تقدير الوقت المتبقي كل 100 صورة
+    
             if (i+1) % 100 == 0 or i+1 == total_files:
                 elapsed = time.time() - start_time
                 remaining = (elapsed / (i+1)) * (total_files - (i+1))
                 print(f"Processed {i+1}/{total_files} images, Estimated remaining time: {remaining/60:.2f} min")
 
         print(f"\u2705 Done {feature_name.upper()} for class '{cls}' in {time.time()-start_time:.2f} seconds")  dd
+
