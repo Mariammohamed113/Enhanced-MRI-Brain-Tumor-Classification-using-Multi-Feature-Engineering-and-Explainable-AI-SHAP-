@@ -28,7 +28,7 @@ import shap
 import mahotas
 
 IMAGE_SIZE = (128,128)
-classes = sorted(os.listdir(data_path))  # أسماء الورم
+classes = sorted(os.listdir(data_path))
 class_map = {c:i for i,c in enumerate(classes)}
 
 # -----------------------------
@@ -93,7 +93,7 @@ def evaluate_model(clf, X_train, X_test, y_train, y_test, feat_name, clf_name, e
     recall = recall_score(y_test, y_pred, average='macro', zero_division=0) # Sensitivity
     f1 = f1_score(y_test, y_pred, average='macro', zero_division=0)
     
-    # Confusion matrix مع جميع الكلاسات حتى لو صفر
+    # Confusion matrix
     cm = confusion_matrix(y_test, y_pred, labels=list(range(len(classes))))
     tn = np.sum(cm) - (cm.sum(axis=1) + cm.sum(axis=0) - np.diag(cm))
     fp = cm.sum(axis=0) - np.diag(cm)
@@ -127,7 +127,7 @@ def evaluate_model(clf, X_train, X_test, y_train, y_test, feat_name, clf_name, e
 results = []
 
 # -----------------------------
-# 8️⃣ Train/Test split (Stratified لضمان كل الكلاسات)
+# 8️⃣ Train/Test split 
 # -----------------------------
 for feat_name, feat_func in feature_functions.items():
     print(f"\n=== Feature: {feat_name} | Train/Test Split ===")
@@ -172,3 +172,4 @@ df_results = pd.DataFrame([{k:v for k,v in r.items() if k!="Model"} for r in res
 output_file = "/content/drive/MyDrive/Feature_Extraction_Results_Stratifed.xlsx"
 df_results.to_excel(output_file, index=False)
 print(f"\nAll results saved to: {output_file}")  asemdah
+
